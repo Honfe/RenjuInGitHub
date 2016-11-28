@@ -3,6 +3,10 @@
 #include <Windows.h>
 #include <conio.h>
 
+// 布尔类型宏定义
+#define BOOL int
+#define TRUE 1
+#define FALSE 0
 // 方向键宏定义
 #define UP 0x48
 #define DOWN 0x50

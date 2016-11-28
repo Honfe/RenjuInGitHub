@@ -2,13 +2,16 @@
 
 void PeopleToPeople(int chessboard[MAX][MAX])
 {
+	// 计算下子数
+	int counter = 0; 
 	// 人人对战模式下白子先下
 	int chessColor = WHITE;
 	COORD pos;
 	drawChessboard(chessboard);
-	while (1) {
+	while (TRUE) {
 		hintColor(chessColor);
 		pos = selectPos(chessboard);
+		++counter;
 		// 用户选择退出并询问确认退出操作
 		if (pos.X == -1 && quit()) {
 			break; // 跳出下棋循环，结束当前游戏
@@ -22,6 +25,7 @@ void PeopleToPeople(int chessboard[MAX][MAX])
 		if (win) {
 			printWinInfo(win);
 			system("pause"); // 卡住方便用户查看结果
+			readPlayerInfo(counter / 2 + counter % 2);
 			break; // 结束游戏
 		}
 		else {
@@ -122,7 +126,7 @@ void coverTarget(int chessboard[MAX][MAX], int x, int y)
 	}
 }
 
-int quit()
+BOOL quit()
 {
 	// 设定句柄指向
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -145,10 +149,10 @@ int quit()
 	// 读取缓冲区残余内容
 	while (getchar() != '\n') continue;
 	if (q == 'y') {
-		return 1;
+		return TRUE;
 	}
 	else {
-		return 0;
+		return FALSE;
 	}
 }
 
@@ -224,4 +228,21 @@ int whoWin(int chessboard[MAX][MAX])
 	// 判断棋盘上是否下满棋子
 	if (count >= MAX * MAX) return 2;
 	else return 0;
+}
+
+void readPlayerInfo(int step)
+{
+	// 设定句柄指向
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	// 隐藏光标
+	showCursor(handle);
+	// 设定初始位置
+	COORD pos = { 0, 21 };
+	SetConsoleCursorPosition(handle, pos);
+
+	char name[NAME];
+	printf("-----------------------------------\n");
+	printf("请输入你的名字：");
+	scanf("%s", name);
+	registerWinner(name, step);
 }

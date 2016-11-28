@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "GameService.h"
 #include "GameSystemService.h"
+#include "RankService.h"
 
 #define MAX 15
 
@@ -54,5 +55,13 @@ void hintColor(int chessColor);
 * 【返回值】无
 */
 void printWinInfo(int win);
+
+/**
+* 【函数名】printRankInfo
+* 【函数功能】打印排行榜的信息
+* 【函数参数】无
+* 【返回值】无
+*/
+void printRankInfo();
 
 #endif

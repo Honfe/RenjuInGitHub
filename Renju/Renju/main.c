@@ -1,6 +1,7 @@
 ﻿#include <stdio.h>
 #include "GameService.h"
 #include "GameSystemService.h"
+#include "RankService.h"
 #include "Menu.h"
 
 // 记录棋盘信息，无子用0表示，黑子用-1表示，白子用1表示
@@ -29,6 +30,9 @@ int main()
 		case 2:
 			break;
 		case 3:
+			system("cls"); // 清空屏幕
+			printRankInfo();
+			system("pause");
 			break;
 		case 4:
 			break;

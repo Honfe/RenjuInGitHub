@@ -107,3 +107,11 @@ void printWinInfo(int win)
 		printf("  ┗━━━━━━━━┛");
 	}
 }
+
+void printRankInfo()
+{
+	printf("\n\n");
+	printf("**************排行榜***************\n");
+	printf("%4s   %10s\t%4s\n", "名次", "姓名", "分数");
+	printRank();
+}
